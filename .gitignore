@@ -1,0 +1,43 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Credentials and certificates
+secrets/
+credentials/
+*.key
+*.pem
+*.pfx
+*.crt
+
+# Azure / local authentication files
+*.publishsettings
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Databricks / notebook temporary files
+.databricks/
+*.dbc
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Large/raw data
+data/raw/
+data/processed/
+
+# Temporary files
+tmp/
+temp/
