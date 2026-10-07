@@ -550,8 +550,10 @@ Validation / Quarantine
         ↓
 Master Orchestrator
 ```
+<img width="1920" height="1020" alt="Pipeine 1 data from  postgresto bronze " src="https://github.com/user-attachments/assets/7f8cf5d2-661c-4c2f-a60b-4f1111c12644" />
 
-This will move the project from a simple working pipeline toward a more production-oriented Data Engineering architecture.
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/e9086102-dfd6-458d-898f-aa3a09935667" />
+
 
 
 
