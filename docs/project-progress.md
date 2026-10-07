@@ -102,3 +102,63 @@ The project is being developed with minimal Azure consumption.
 - Run pipelines only when required
 - Stop billable compute when not in use
 - Monitor Azure budget and usage
+# Project Progress
+
+## 2026-10-07 — ADF Reusable Ingestion & Incremental Loading
+
+### Completed
+
+#### Parameterized ADF Ingestion
+
+Created a reusable Azure Data Factory pipeline:
+
+`PL_02_PostgreSQL_To_Bronze_Reusable`
+
+The pipeline accepts:
+
+- `schema_name`
+- `table_name`
+
+These parameters are passed to the PostgreSQL source dataset and ADLS Gen2 Bronze destination dataset.
+
+The reusable pipeline was successfully tested with:
+
+| Schema | Table | Bronze Destination |
+|---|---|---|
+| customer | customers | bronze/customer/customers.csv |
+| sales | orders | bronze/sales/orders.csv |
+| dealer | dealers | bronze/dealer/dealers.csv |
+| product | vehicle_models | bronze/product/vehicle_models.csv |
+
+#### Incremental Loading — Initial Implementation
+
+Created PostgreSQL control table:
+
+`public.etl_watermark`
+
+The table stores the last successfully processed timestamp.
+
+Initial watermark:
+
+`1900-01-01 00:00:00`
+
+Verified `sales.orders.created_at` as the watermark column.
+
+Created ADF Lookup activity:
+
+`Lookup_Last_Watermark`
+
+The Lookup retrieves the current watermark:
+
+```sql
+SELECT last_loaded_timestamp
+FROM public.etl_watermark
+WHERE pipeline_name = 'PL_02_sales_orders_incremental';
+
+The Lookup is connected to the Copy activity using a Success dependency.
+The Copy activity uses a dynamic query based on the retrieved watermark:
+SELECT *
+FROM sales.orders
+WHERE created_at > <last_loaded_timestamp>;
+
+The first incremental-load test completed successfully.
