@@ -38,6 +38,31 @@ Thumbs.db
 data/raw/
 data/processed/
 
+# Generated PySpark pipeline outputs
+Databricks/outputs/
+Databricks/final_outputs/
+
+# Spark generated files
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Python test caches
+.pytest_cache/
+
 # Temporary files
 tmp/
 temp/
+
+# Python virtual environments
+.venv/
+.venv-dbt/
+
+# dbt generated files
+target/
+dbt_packages/
+logs/
+
+# Python cache
+__pycache__/
+*.pyc
