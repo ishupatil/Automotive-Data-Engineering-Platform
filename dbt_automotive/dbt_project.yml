@@ -1,0 +1,19 @@
+﻿
+name: dbt_automotive
+version: "1.0.0"
+config-version: 2
+profile: dbt_automotive
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  dbt_automotive:
+    staging:
+      +materialized: table
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table

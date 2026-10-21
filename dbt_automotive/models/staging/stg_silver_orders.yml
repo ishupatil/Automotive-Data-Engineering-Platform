@@ -1,0 +1,14 @@
+﻿version: 2
+
+models:
+  - name: stg_silver_orders
+    description: "Staging view over the existing Silver orders table."
+    columns:
+      - name: order_id
+        description: "Order identifier from Silver."
+        data_tests:
+          - not_null
+          - unique
+      - name: order_date
+        data_tests:
+          - not_null

@@ -1,0 +1,7 @@
+[project]
+name = "dbt-automotive"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "dbt-databricks<1.12",
+]

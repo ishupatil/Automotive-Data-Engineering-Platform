@@ -1,0 +1,9 @@
+﻿version: 2
+
+sources:
+  - name: automotive_silver
+    database: sales_transformations
+    schema: default
+    tables:
+      - name: silver_orders
+        description: "Existing validated and reviewable automotive orders from the Silver layer."
